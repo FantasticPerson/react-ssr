@@ -1,0 +1,11 @@
+TTFP 首屏展示时间
+
+什么是服务器端渲染
+
+
+node 监听 
+nodemon supervisor
+
+npm run all 提升开发效率
+
+服务器端用 static router
