@@ -7,18 +7,19 @@ import { getHomeList } from './store/actions'
 class Home extends Component {
 
     componentDidMount() {
-        this.props.getHomeList()
+        if (!this.props.newsList.length) {
+            this.props.getHomeList()
+        }
     }
 
-    getList(){
-        const {newsList} = this.props
-        return newsList.map(item=><div key={item.id}>{item.title}</div>)
+    getList() {
+        const { newsList } = this.props
+        return newsList.map(item => <div key={item.id}>{item.title}</div>)
     }
 
     render() {
         return (
             <div>
-                <Header />
                 {this.getList()}
                 <button onClick={() => { alert('click') }}>click</button>
             </div>
@@ -26,9 +27,16 @@ class Home extends Component {
     }
 }
 
+Home.loadData = (store) => {
+    return store.dispatch(getHomeList())
+    // console.log('data')
+    //这个函数负责在服务端渲染之前，将数据加载好
+}
+
 const mapStateToProps = state => ({
     newsList: state.home.newsList
 })
+
 const mapDispathToProps = dispatch => ({
     getHomeList() {
         dispatch(getHomeList())
