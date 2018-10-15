@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './containers/Home'
-import Login from './containers/Login'
+import Translation from './containers/Translation'
 import {renderRoutes} from 'react-router-config'
 import App from './app'
 
@@ -19,10 +19,11 @@ const routesMap = [{
             key: 'home'
         },
         {
-            path: '/login',
-            component: Login,
+            path: '/translation',
+            component: Translation,
             exact: true,
-            key: 'login'
+            key: 'translation',
+            loadData: Translation.loadData,
         }
     ]
 }]
