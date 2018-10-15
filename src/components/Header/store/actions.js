@@ -12,20 +12,32 @@ const changeLogin = (value)=>({
 export const getHeaderInfo = () => {
     // let request = null
     return (dispatch,getState,axiosInstance) => {
-        //浏览器运行 /api/news.json = http://localhost:3000/api/news.json
-        //服务器运行 /api/news.json = 服务器根目录下的 /api/news.json
-        // if(isServer){
-        //     request = serverAxios
-        // } else {
-        //     request = clientAxios
-        // }
-
-        // const request = isServer ? serverAxios : clientAxios
-        // let url = isServer ? 'http://localhost:3000/jsons/news.json' : '/api/news.json'
         return axiosInstance.get('/api/isLogin.json')
             .then(res => {
                 const list = res.data.data
                 dispatch(changeLogin(res.data.data.login))
+            })
+    }
+} 
+
+export const login = () => {
+    // let request = null
+    return (dispatch,getState,axiosInstance) => {
+        return axiosInstance.get('/api/login.json')
+            .then(res => {
+                const list = res.data.data
+                dispatch(changeLogin(true))
+            })
+    }
+} 
+
+export const logout = () => {
+    // let request = null
+    return (dispatch,getState,axiosInstance) => {
+        return axiosInstance.get('/api/logout.json')
+            .then(res => {
+                const list = res.data.data
+                dispatch(changeLogin(false))
             })
     }
 } 

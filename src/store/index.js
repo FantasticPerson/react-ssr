@@ -12,9 +12,9 @@ const reducer = combineReducers({
     header:HeaderReducer
 })
 
-export const getStore = () => {
+export const getStore = (req) => {
     //改变服务器端的store的内容，一定要使用serverAxios
-    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios)))
+    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios(req))))
 }
 
 export const getClientStore = () => {

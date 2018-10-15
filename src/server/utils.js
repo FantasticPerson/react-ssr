@@ -13,7 +13,7 @@ export const render = (store, routes, req) => {
     //根据路由路径往store里面加数据
     // const matchedRoutes = matchRoutes(routesMap, req.path)
     // console.log(matchedRoutes)
-    // const store = getStore()
+    // const store = getStore(req)
     // const promises = []
     // matchedRoutes.forEach(item => {
     //     item.route.loadData && promises.push(item.route.loadData(store))

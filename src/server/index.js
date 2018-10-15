@@ -14,7 +14,7 @@ app.use('/api',proxy('http://127.0.0.1:3000',{
     }
 }))
 app.get('*', (req, res) => {
-    const store = getStore()
+    const store = getStore(req)
     const matchedRoutes = matchRoutes(routesMap, req.path)
     // const promises = []
     // matchedRoutes.forEach(item => {
