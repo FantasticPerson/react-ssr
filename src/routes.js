@@ -8,6 +8,7 @@ import App from './app'
 const routesMap = [{
     path:'/',
     component:App,
+    loadData: App.loadData,
     key:'app',
     routes:[
         {
