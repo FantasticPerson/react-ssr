@@ -1490,7 +1490,7 @@ eval("\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: '/'\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../store/config */ \"./src/store/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: '/',\n    params: {\n        secret: _config2.default.secrrt\n    }\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
 
 /***/ }),
 
@@ -1614,6 +1614,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 /***/ }),
 
+/***/ "./src/containers/NotFound/index.js":
+/*!******************************************!*\
+  !*** ./src/containers/NotFound/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar NotFound = function (_React$Component) {\n    _inherits(NotFound, _React$Component);\n\n    function NotFound() {\n        _classCallCheck(this, NotFound);\n\n        return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));\n    }\n\n    _createClass(NotFound, [{\n        key: 'componentWillMount',\n        value: function componentWillMount() {\n            //这个生命周期 服务器端也会运行\n            var staticContext = this.props.staticContext;\n\n            staticContext && (staticContext.NotFound = true);\n        }\n    }, {\n        key: 'render',\n        value: function render() {\n            return _react2.default.createElement(\n                'div',\n                null,\n                '404, sorry, page not found'\n            );\n        }\n    }]);\n\n    return NotFound;\n}(_react2.default.Component);\n\nexports.default = NotFound;\n\n//# sourceURL=webpack:///./src/containers/NotFound/index.js?");
+
+/***/ }),
+
 /***/ "./src/containers/Translation/index.js":
 /*!*********************************************!*\
   !*** ./src/containers/Translation/index.js ***!
@@ -1670,7 +1682,7 @@ eval("\n\n//# sourceURL=webpack:///./src/containers/Translation/store/index.js?"
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.routes = exports.routesMap = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _Home = __webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Translation = __webpack_require__(/*! ./containers/Translation */ \"./src/containers/Translation/index.js\");\n\nvar _Translation2 = _interopRequireDefault(_Translation);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/es/index.js\");\n\nvar _app = __webpack_require__(/*! ./app */ \"./src/app.js\");\n\nvar _app2 = _interopRequireDefault(_app);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar routesMap = [{\n    path: '/',\n    component: _app2.default,\n    loadData: _app2.default.loadData,\n    key: 'app',\n    routes: [{\n        path: '/',\n        component: _Home2.default,\n        exact: true,\n        loadData: _Home2.default.loadData,\n        key: 'home'\n    }, {\n        path: '/translation',\n        component: _Translation2.default,\n        exact: true,\n        key: 'translation',\n        loadData: _Translation2.default.loadData\n    }]\n}];\n\nexports.default = routes;\n\n\nvar mapRoutes = function mapRoutes() {\n    return _react2.default.createElement(\n        'div',\n        null,\n        (0, _reactRouterConfig.renderRoutes)(routesMap)\n    );\n};\nvar routes = mapRoutes();\n\nexports.routesMap = routesMap;\nexports.routes = routes;\n\n//# sourceURL=webpack:///./src/routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.routes = exports.routesMap = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _Home = __webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Translation = __webpack_require__(/*! ./containers/Translation */ \"./src/containers/Translation/index.js\");\n\nvar _Translation2 = _interopRequireDefault(_Translation);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/es/index.js\");\n\nvar _app = __webpack_require__(/*! ./app */ \"./src/app.js\");\n\nvar _app2 = _interopRequireDefault(_app);\n\nvar _NotFound = __webpack_require__(/*! ./containers/NotFound */ \"./src/containers/NotFound/index.js\");\n\nvar _NotFound2 = _interopRequireDefault(_NotFound);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar routesMap = [{\n    path: '/',\n    component: _app2.default,\n    loadData: _app2.default.loadData,\n    key: 'app',\n    routes: [{\n        path: '/',\n        component: _Home2.default,\n        exact: true,\n        loadData: _Home2.default.loadData,\n        key: 'home'\n    }, {\n        path: '/translation',\n        component: _Translation2.default,\n        exact: true,\n        key: 'translation',\n        loadData: _Translation2.default.loadData\n    }, {\n        component: _NotFound2.default,\n        key: 'notfound'\n    }]\n}];\n\nexports.default = routes;\n\n\nvar mapRoutes = function mapRoutes() {\n    return _react2.default.createElement(\n        'div',\n        null,\n        (0, _reactRouterConfig.renderRoutes)(routesMap)\n    );\n};\nvar routes = mapRoutes();\n\nexports.routesMap = routesMap;\nexports.routes = routes;\n\n//# sourceURL=webpack:///./src/routes.js?");
 
 /***/ }),
 
@@ -1682,7 +1694,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n    return _axios2.default.create({\n        baseURL: 'http://localhost:3000',\n        headers: {\n            cookie: req.get('cookie') || ''\n        }\n    });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../store/config */ \"./src/store/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n    return _axios2.default.create({\n        baseURL: 'http://localhost:3000',\n        headers: {\n            cookie: req.get('cookie') || ''\n        },\n        params: { secret: _config2.default.secret }\n    });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+
+/***/ }),
+
+/***/ "./src/store/config.js":
+/*!*****************************!*\
+  !*** ./src/store/config.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = { secrrt: 'abcd' };\n\n//# sourceURL=webpack:///./src/store/config.js?");
 
 /***/ }),
 

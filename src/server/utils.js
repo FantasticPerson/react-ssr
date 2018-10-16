@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { routesMap, routes } from '../routes'
 import getStore from '../store'
 
-export const render = (store, routes, req) => {
+export const render = (store, routes, req,context) => {
 
     //如果这里我们能拿到异步数据，并填充到store中
     // store里面到底填充什么数据
@@ -23,7 +23,7 @@ export const render = (store, routes, req) => {
     //     console.log(store.getState())
     const content = renderToString((
         <Provider store={store}>
-            <StaticRouter location={req.path} context={{}}>
+            <StaticRouter location={req.path} context={context}>
                 {routes}
             </StaticRouter>
         </Provider>

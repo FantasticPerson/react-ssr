@@ -7,10 +7,10 @@ import { matchRoutes } from 'react-router-config'
 
 const app = express()
 app.use(express.static('public'))
-app.use('/api',proxy('http://127.0.0.1:3000',{
-    proxyReqPathResolver:(req)=>{
-        console.log(('/json'+req.path).replace('/api',''))
-        return ('/json'+req.path).replace('/api','')
+app.use('/api', proxy('http://127.0.0.1:3000', {
+    proxyReqPathResolver: (req) => {
+        console.log(('/json' + req.path).replace('/api', ''))
+        return ('/json' + req.path).replace('/api', '')
     }
 }))
 app.get('*', (req, res) => {
@@ -21,7 +21,15 @@ app.get('*', (req, res) => {
     //     item.route.loadData && promises.push(item.route.loadData(store))
     // })
     // Promise.all(promises).then(_ => {
-        res.send(render(store, routes, req))
+    const context = {}
+    const html = res.send(render(store, routes, req, context))
+    if(context.NotFound){
+        res.status(404)
+        res.send(html)
+    }else {
+        res.send(html)
+    }
+    // res.send(html)
     // })
     // res.send(render())
     // render(req,res)

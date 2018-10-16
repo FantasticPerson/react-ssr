@@ -1,0 +1,1 @@
+export default {secrrt:'abcd'}

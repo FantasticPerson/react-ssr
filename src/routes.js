@@ -4,6 +4,7 @@ import Home from './containers/Home'
 import Translation from './containers/Translation'
 import {renderRoutes} from 'react-router-config'
 import App from './app'
+import NotFound from './containers/NotFound';
 
 const routesMap = [{
     path:'/',
@@ -24,6 +25,10 @@ const routesMap = [{
             exact: true,
             key: 'translation',
             loadData: Translation.loadData,
+        },
+        {
+            component:NotFound,
+            key:'notfound'
         }
     ]
 }]
