@@ -16,20 +16,42 @@ app.use('/api', proxy('http://127.0.0.1:3000', {
 app.get('*', (req, res) => {
     const store = getStore(req)
     const matchedRoutes = matchRoutes(routesMap, req.path)
-    // const promises = []
-    // matchedRoutes.forEach(item => {
-    //     item.route.loadData && promises.push(item.route.loadData(store))
-    // })
+    const promises = []
+    matchedRoutes.forEach(item => {
+        if (item.route.loadData) {
+            const promise = new Promise((resolve, reject) => {
+                item.route.loadData(store).then(resolve).catch(resolve)
+            })
+            promises.push(promise)
+        }
+
+        // item.route.loadData && promises.push(item.route.loadData(store))
+    })
     // Promise.all(promises).then(_ => {
     const context = {}
     const html = res.send(render(store, routes, req, context))
-    if(context.NotFound){
+    if (context.action === 'REPLACE') {
+        res.redirect(301, context.url)
+    } else if (context.NotFound) {
         res.status(404)
         res.send(html)
-    }else {
+    } else {
         res.send(html)
     }
     // res.send(html)
+    // })
+    // .catch(()=>{
+    //     const context = {}
+    //     const html = res.send(render(store, routes, req, context))
+    //     if(context.action === 'REPLACE'){
+    //         res.redirect(301,context.url)
+    //     } else if(context.NotFound){
+    //         res.status(404)
+    //         res.send(html)
+    //     }else {
+    //         res.send(html)
+    //     }
+    //     // res.end('sorry,request error!')
     // })
     // res.send(render())
     // render(req,res)
