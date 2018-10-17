@@ -28,8 +28,11 @@ app.get('*', (req, res) => {
         // item.route.loadData && promises.push(item.route.loadData(store))
     })
     // Promise.all(promises).then(_ => {
-    const context = {}
+    const context = {
+        css:[]
+    }
     const html = res.send(render(store, routes, req, context))
+
     if (context.action === 'REPLACE') {
         res.redirect(301, context.url)
     } else if (context.NotFound) {

@@ -4,9 +4,10 @@ import { renderRoutes } from 'react-router-config'
 import {actions} from './components/Header/store'
 
 const App = (props) => {
+
     return (
         <div>
-            <Header></Header>
+            <Header staticContext={props.staticContext}></Header>
             {renderRoutes(props.route.routes)}
         </div>
     )

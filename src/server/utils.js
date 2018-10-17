@@ -1,12 +1,13 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+import { Helmet } from 'react-helmet'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { matchRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 import { routesMap, routes } from '../routes'
 import getStore from '../store'
 
-export const render = (store, routes, req,context) => {
+export const render = (store, routes, req, context) => {
 
     //如果这里我们能拿到异步数据，并填充到store中
     // store里面到底填充什么数据
@@ -28,8 +29,14 @@ export const render = (store, routes, req,context) => {
             </StaticRouter>
         </Provider>
     ))
+    const helmet = Helmet.renderStatic()
+    const cssStr = context.css.length ? context.css.join('\n') || ''
     return `<html><head>
-                    <title>ssr</title>
+                    ${helmet.title.toString()}
+                    ${helmet.meta.toString()}
+
+                    <meta name="Description" content="sasfsdfsdfssdfdsdsfsfsdsfds"/>
+                    <style>${cssStr}</style>
                 </head>
                 <body>
                     <div id="root">${content}</div>

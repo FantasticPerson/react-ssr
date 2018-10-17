@@ -27,3 +27,11 @@ npm run all 提升开发效率
     （1）浏览器请求html（携带cookie）
     （2）Nodejs服务器进行服务器端渲染
     （3）首先从api服务器取数据（没有携带cookie）
+
+isomopic-style-loader 和 style-loader 的区别
+
+nginx + prerender
+
+待提高
+1.代码待压缩
+
